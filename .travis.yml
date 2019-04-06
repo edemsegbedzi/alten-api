@@ -1,6 +1,6 @@
 language: java
 services:
   - docker
-before_install:
+after_install:
   - docker build -t alten-api .
   - docker run -p 8080:8080 alten-api
