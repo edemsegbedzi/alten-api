@@ -34,6 +34,13 @@ public class Shuffle {
 //                customerRepo.save(c);
 //            }
 //        });
+
+        List<String> status = Arrays.asList("offline","connected");
+        vehicleRepo.findAll().stream().forEach(e ->{
+            Collections.shuffle(status);
+            e.setStatus(status.get(0));
+            vehicleRepo.save(e);
+        });
     }
 
 }

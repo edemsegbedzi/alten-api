@@ -36,30 +36,25 @@ public class ApiApplication {
 
 
                  List<Vehicle> vehicles = Arrays.asList(
-                    new Vehicle("YS2R4X20005399401","ABC123"),
-                    new Vehicle("VLUR4X20009093588","DEF456"),
-                    new Vehicle("VLUR4X20009048066","GHI789"));
+                    new Vehicle("YS2R4X20005399401","ABC123","connected"),
+                    new Vehicle("VLUR4X20009093588","DEF456","connected"),
+                    new Vehicle("VLUR4X20009048066","GHI789","connected"));
             customerRepo.save(new Customer("Kalles Grustransporter AB","Cementvägen 8, 111 11 Södertälje",vehicles));
             vehicles = Arrays.asList(
-                            new Vehicle("YS2R4X20005388011","JKL012"),
-                            new Vehicle("YS2R4X20005387949","MNO345"));
+                            new Vehicle("YS2R4X20005388011","JKL012","connected"),
+                            new Vehicle("YS2R4X20005387949","MNO345","connected"));
                    customerRepo.save(new Customer("Johans Bulk AB","Balkvägen 12, 222 22 Stockholm", vehicles));
 
                    vehicles = Arrays.asList(
-                            new Vehicle("YS2R4X20005387765","PQR678"),
-                            new Vehicle("YS2R4X20005387055","STU901"));
+                            new Vehicle("YS2R4X20005387765","PQR678","offline"),
+                            new Vehicle("YS2R4X20005387055","STU901","connected"));
                    customerRepo.save(new Customer("Haralds Värdetransporter AB","Budgetvägen 1, 333 33 Uppsala", vehicles));
 
 
-//            System.out.println(customerRepo.findById(1L).get().getVehicles());
-
-             List<VehicleDto> dtos =entityManager.createNativeQuery("SELECT vehicle.id as id,vehicle.vin as vin,vehicle.reg_num as regNum,vehicle.connected_to as connectedTo,vehicle.create_date_time as createDateTime,vehicle.update_date_time as updateDateTime,customer.name as name FROM customer_vehicles" +
+             List<VehicleDto> dtos =entityManager.createNativeQuery("SELECT vehicle.id as id,vehicle.vin as vin,vehicle.reg_num as regNum,vehicle.connected_to as connectedTo,vehicle.status as status, vehicle.create_date_time as createDateTime,vehicle.update_date_time as updateDateTime,customer.name as customerName,customer.id as customerId FROM customer_vehicles" +
                    " JOIN customer ON customer_vehicles.customer_id = customer.id " +
                     "JOIN vehicle ON customer_vehicles.vehicles_id = vehicle.id").unwrap(org.hibernate.query.Query.class).setResultTransformer(Transformers.aliasToBean(VehicleDto.class)).getResultList();
-
             System.out.println(dtos);
-//            System.out.println(query.getResultList());
-//            System.out.println(l.get(0).getName());
 
         };
 

@@ -24,25 +24,8 @@ public interface VehicleRepo  extends CrudRepository<Vehicle,Long> {
     @Query(value = "SELECT * FROM vehicle LIMIT 1 ",nativeQuery = true)
     Vehicle findFirst();
 
-//    @Query(value = "SELECT vehicle.*,  customer.name as name FROM customer_vehicles " +
-//            "JOIN customer ON customer_vehicles.customer_id = customer.id " +
-//            "JOIN vehicle ON customer_vehicles.vehicles_id = vehicle.id",nativeQuery = true)
     List<Vehicle> findAll();
 
 
 
-
-//        Long id;
-//
-//        String vin;
-//
-//        String regNum;
-//
-//        Long connectedTo;
-//
-//private LocalDateTime createDateTime;
-//
-//private LocalDateTime updateDateTime;
-//
-//        String name;
 }

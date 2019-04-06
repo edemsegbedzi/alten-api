@@ -32,12 +32,9 @@ public class MainServiceTest {
         assertNotNull(mainService.getVehicles(null));
     }
     @Test
-    public void getVehiclesShouldBeNull() {
-        assertNull(mainService.getVehicles(-1L).get(0));
-    }
-    @Test
-    public void getVehiclesShouldNotBeEmpty() {
-        assertTrue(mainService.getVehicles(-1L).size() > 0);
+    public void getVehiclesShouldBeEmpty() {
+
+        assertTrue(mainService.getVehicles(-1L).size() == 0);
     }
 
 }

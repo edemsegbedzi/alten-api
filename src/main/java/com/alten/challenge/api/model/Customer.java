@@ -27,7 +27,7 @@ public class Customer {
     }
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     Long id;
     @NotNull
     String name,address;
