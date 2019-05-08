@@ -43,7 +43,7 @@ public class ApiApplication {
             vehicles = Arrays.asList(
                             new Vehicle("YS2R4X20005388011","JKL012","connected"),
                             new Vehicle("YS2R4X20005387949","MNO345","connected"));
-                   customerRepo.save(new Customer("Johans Bulk AB","Balkvägen 12, 222 22 Stockholm", vehicles));
+            customerRepo.save(new Customer("Johans Bulk AB","Balkvägen 12, 222 22 Stockholm", vehicles));
 
                    vehicles = Arrays.asList(
                             new Vehicle("YS2R4X20005387765","PQR678","offline"),
@@ -51,10 +51,9 @@ public class ApiApplication {
                    customerRepo.save(new Customer("Haralds Värdetransporter AB","Budgetvägen 1, 333 33 Uppsala", vehicles));
 
 
-             List<VehicleDto> dtos =entityManager.createNativeQuery("SELECT vehicle.id as id,vehicle.vin as vin,vehicle.reg_num as regNum,vehicle.connected_to as connectedTo,vehicle.status as status, vehicle.create_date_time as createDateTime,vehicle.update_date_time as updateDateTime,customer.name as customerName,customer.id as customerId FROM customer_vehicles" +
-                   " JOIN customer ON customer_vehicles.customer_id = customer.id " +
-                    "JOIN vehicle ON customer_vehicles.vehicles_id = vehicle.id").unwrap(org.hibernate.query.Query.class).setResultTransformer(Transformers.aliasToBean(VehicleDto.class)).getResultList();
-            System.out.println(dtos);
+//             List<VehicleDto> dtos =entityManager.createNativeQuery("SELECT vehicle.id as id,vehicle.vin as vin,vehicle.reg_num as regNum,vehicle.connected_to as connectedTo,vehicle.status as status, vehicle.create_date_time as createDateTime,vehicle.update_date_time as updateDateTime,customer.name as customerName,customer.id as customerId FROM customer_vehicles" +
+//                   " JOIN customer ON customer_vehicles.customer_id = customer.id " +
+//                    "JOIN vehicle ON customer_vehicles.vehicles_id = vehicle.id").unwrap(org.hibernate.query.Query.class).setResultTransformer(Transformers.aliasToBean(VehicleDto.class)).getResultList();
 
         };
 

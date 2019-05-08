@@ -31,6 +31,7 @@ public class MainServiceTest {
     public void getVehiclesShouldNotBeNull() {
         assertNotNull(mainService.getVehicles(null));
     }
+
     @Test
     public void getVehiclesShouldBeEmpty() {
 

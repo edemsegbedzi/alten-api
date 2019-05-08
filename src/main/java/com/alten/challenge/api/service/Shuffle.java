@@ -18,6 +18,9 @@ public class Shuffle {
     @Autowired
     VehicleRepo vehicleRepo;
 
+    /**
+     * Shuffles the vehicle connection status (connected/offline) at the fixed rate of every 60 seconds
+     */
     @Scheduled(fixedRate = 60000)
     public void shuffleVehicleConnectionStatus(){
 //        vehicleRepo.updateAll(); // Set all vehicles inter connections to null to prevent unique key violations
